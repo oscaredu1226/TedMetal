@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contacto | TEDMETAL</title>
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="header-container">
+      <div class="logo">TEDMETAL</div>
+      <button class="menu-toggle" id="menu-toggle">☰</button>
+      <nav id="main-nav">
+        <a href="index.html">Inicio</a>
+        <a href="#">Productos</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contacto-section">
+
+    <!-- Mapa -->
+    <div class="mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15610.582334972414!2d-77.043304!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c17f4cb79f%3A0x3c18f1609e14e25d!2sLima!5e0!3m2!1ses!2spe!4v1714583400000!5m2!1ses!2spe"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      
+
+    <!-- Formulario de contacto -->
+    <section class="formulario-contacto">
+      <div class="form-container">
+        <div class="formulario">
+          <h2>Envíanos un email</h2>
+          <form action="https://formsubmit.co/oscaredu01@hotmail.com" method="POST">
+            <!-- Opcional: sin captcha y redirección -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://tuweb.com/gracias.html">
+
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto" required>
+              <option value="">Selecciona una opción</option>
+              <option>Cita previa</option>
+              <option>Información</option>
+              <option>Postventa</option>
+            </select>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="¿Cómo podemos ayudarte?" rows="5" required></textarea>
+
+            <button type="submit">ENVIAR</button>
+          </form>
+        </div>
+
+        <div class="informacion-contacto">
+          <h2>Contáctanos</h2>
+          <p>¿Dudas? Rellena el formulario o escríbenos a <strong>web@tedmetal.com</strong></p>
+
+          <div class="datos-contacto">
+            <p><i class="fas fa-map-marker-alt"></i> Av. Principal 123, Lima, Perú</p>
+            <p><i class="fas fa-envelope"></i> contacto@tedmetal.com</p>
+            <p><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 6pm</p>
+          </div>
+
+          <div class="redes-sociales">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <!-- Sección de Confianza -->
+<section class="confianza">
+    <div class="confianza-container">
+      <div class="confianza-item">
+        <i class="fas fa-shield-alt"></i>
+        <p>Garantía de 2 años</p>
+      </div>
+      <div class="confianza-item">
+        <i class="fas fa-credit-card"></i>
+        <p>Pago seguro y financiación</p>
+      </div>
+      <div class="confianza-item">
+        <i class="fas fa-truck"></i>
+        <p>Envío gratuito desde S/0.00*</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>TEDMETAL</h3>
+        <p>Creaciones en madera y metal a medida, combinando diseño y calidad para transformar tus espacios</p>
+        <p>Síguenos en:</p>
+        <a href="https://facebook.com" class="footer-facebook" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </div>
+      <div class="footer-col">
+        <h4>Contáctanos</h4>
+        <p><strong>Horarios:</strong> Atendemos las 24 horas</p>
+        <p><strong>Correo:</strong> <a href="mailto:contacto@tedmetal.com">contacto@tedmetal.com</a></p>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-copy">
+      &copy; 2025 TEDMETAL | Todos los derechos reservados
+    </div>
+    <a href="https://wa.me/51987509361?text=Hola TEDMETAL" class="whatsapp-btn" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/220/220236.png" alt="WhatsApp">
+    </a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
