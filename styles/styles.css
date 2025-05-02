@@ -18,6 +18,11 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .header-container {
   max-width: 1400px;
