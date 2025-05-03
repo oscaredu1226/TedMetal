@@ -133,6 +133,36 @@ nav a {
   object-fit: cover;
 }
 
+.efecto-hover {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.efecto-hover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease-in-out;
+}
+
+.efecto-hover .imagen-hover {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.efecto-hover:hover .imagen-hover {
+  transform: translateY(100%);
+}
+
+
+
 /* ANIMACIÓN HERO TEXTO */
 .animar-texto {
   opacity: 0;
