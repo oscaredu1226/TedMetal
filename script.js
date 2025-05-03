@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const filtroBotones = document.querySelectorAll('.filtro-item');
   const productos = document.querySelectorAll('.producto-card');
   const inputBusqueda = document.getElementById('busqueda-producto');
+  const sidebar = document.querySelector('.sidebar-filtros');
+  const toggleFiltros = document.getElementById('abrir-filtros');
+  const selectorCategoria = document.getElementById('selector-categoria'); // NUEVO
 
   // === NAVBAR TOGGLE ===
   toggle?.addEventListener('click', () => {
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10);
   });
 
-  // === Filtro por categoría con animación suave ===
+  // === Filtro por categoría con botones ===
   filtroBotones.forEach(boton => {
     boton.addEventListener('click', () => {
       const categoria = boton.getAttribute('data-categoria');
@@ -49,35 +52,64 @@ document.addEventListener('DOMContentLoaded', () => {
       filtroBotones.forEach(btn => btn.classList.remove('active'));
       boton.classList.add('active');
 
-      productos.forEach(producto => {
-        const cat = producto.getAttribute('data-categoria');
-        if (categoria === 'todos' || cat === categoria) {
-          producto.style.display = 'block';
-          setTimeout(() => {
-            producto.classList.add('visible');
-          }, 10);
-        } else {
-          producto.classList.remove('visible');
-          setTimeout(() => {
-            producto.style.display = 'none';
-          }, 300); // espera que termine animación antes de ocultar
-        }
-      });
+      filtrarProductos(categoria, inputBusqueda?.value.toLowerCase() || '');
+
+      // Ocultar sidebar en móviles
+      if (window.innerWidth <= 991) {
+        sidebar.classList.add('oculto');
+      }
+
+      // Si hay un selector, sincronizarlo
+      if (selectorCategoria) {
+        selectorCategoria.value = categoria;
+      }
     });
   });
 
+  // === Buscador ===
   inputBusqueda?.addEventListener('input', () => {
     const valor = inputBusqueda.value.toLowerCase();
-    const categoriaActiva = document.querySelector('.filtro-item.active')?.getAttribute('data-categoria');
-  
+
+    // Buscar la categoría activa (desde botones o select)
+    let categoriaActiva = document.querySelector('.filtro-item.active')?.getAttribute('data-categoria');
+    if (!categoriaActiva && selectorCategoria) {
+      categoriaActiva = selectorCategoria.value;
+    }
+
+    filtrarProductos(categoriaActiva, valor);
+  });
+
+  // === Dropdown de categorías (select) ===
+  selectorCategoria?.addEventListener('change', () => {
+    const categoria = selectorCategoria.value;
+    const valorBusqueda = inputBusqueda?.value.toLowerCase() || '';
+
+    // Quitar selección activa de botones si hay
+    filtroBotones.forEach(btn => btn.classList.remove('active'));
+
+    filtrarProductos(categoria, valorBusqueda);
+  });
+
+  // === TOGGLE SIDEBAR DE FILTROS EN MÓVILES ===
+  if (window.innerWidth <= 991 && sidebar) {
+    sidebar.classList.add('oculto');
+  }
+
+  toggleFiltros?.addEventListener('click', () => {
+    sidebar.classList.toggle('oculto');
+    toggleFiltros.textContent = sidebar.classList.contains('oculto') ? 'Mostrar Filtros' : 'Ocultar Filtros';
+  });
+
+  // === Función para filtrar productos ===
+  function filtrarProductos(categoria, textoBusqueda) {
     productos.forEach(producto => {
       const nombre = producto.querySelector('.producto-nombre')?.textContent.toLowerCase();
-      const categoria = producto.getAttribute('data-categoria');
-  
-      const coincideNombre = nombre.includes(valor);
-      const coincideCategoria = (categoriaActiva === 'todos' || categoria === categoriaActiva);
-  
-      if (coincideNombre && coincideCategoria) {
+      const cat = producto.getAttribute('data-categoria').toLowerCase();
+
+      const coincideCategoria = (categoria === 'todos' || cat === categoria.toLowerCase());
+      const coincideBusqueda = nombre.includes(textoBusqueda);
+
+      if (coincideCategoria && coincideBusqueda) {
         producto.style.display = 'block';
         setTimeout(() => producto.classList.add('visible'), 10);
       } else {
@@ -87,6 +119,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 200);
       }
     });
-  });
-  
+  }
 });
