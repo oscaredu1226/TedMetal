@@ -124,4 +124,33 @@ document.addEventListener('DOMContentLoaded', () => {
     boton.textContent = 'Comprar';
     producto.appendChild(boton);
   });
+
+  // === FORMULARIO DE CONTACTO: Enviar sin redirigir y mostrar mensaje de éxito ===
+  const form = document.querySelector("form");
+  const mensajeExito = document.getElementById("mensaje-exito");
+
+  if (form && mensajeExito) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Evita redirección
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          mensajeExito.style.display = "block";
+          form.reset();
+        } else {
+          alert("Hubo un error al enviar el formulario. Intenta de nuevo.");
+        }
+      }).catch(error => {
+        alert("Error de conexión. Intenta más tarde.");
+      });
+    });
+  }
 });

@@ -29,12 +29,11 @@
 
     <!-- Mapa -->
     <div class="mapa">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15610.582334972414!2d-77.043304!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c17f4cb79f%3A0x3c18f1609e14e25d!2sLima!5e0!3m2!1ses!2spe!4v1714583400000!5m2!1ses!2spe"
-          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-      
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15610.582334972414!2d-77.043304!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8c17f4cb79f%3A0x3c18f1609e14e25d!2sLima!5e0!3m2!1ses!2spe!4v1714583400000!5m2!1ses!2spe"
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
 
     <!-- Formulario de contacto -->
     <section class="formulario-contacto">
@@ -42,9 +41,8 @@
         <div class="formulario">
           <h2>Envíanos un email</h2>
           <form action="https://formsubmit.co/oscaredu01@hotmail.com" method="POST">
-            <!-- Opcional: sin captcha y redirección -->
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_next" value="https://tuweb.com/gracias.html">
+            <input type="text" name="_honey" style="display:none">
 
             <label for="asunto">Asunto</label>
             <select id="asunto" name="asunto" required>
@@ -62,6 +60,11 @@
 
             <button type="submit">ENVIAR</button>
           </form>
+
+          <!-- Mensaje de éxito oculto -->
+          <div id="mensaje-exito" style="display:none; background-color: #d4edda; color: #155724; padding: 1em; margin-top: 1em; border: 1px solid #c3e6cb;">
+            ¡Mensaje enviado correctamente! Gracias por contactarnos.
+          </div>
         </div>
 
         <div class="informacion-contacto">
@@ -84,8 +87,8 @@
 
   </main>
 
-    <!-- Sección de Confianza -->
-<section class="confianza">
+  <!-- Sección de Confianza -->
+  <section class="confianza">
     <div class="confianza-container">
       <div class="confianza-item">
         <i class="fas fa-shield-alt"></i>
